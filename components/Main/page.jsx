@@ -1720,19 +1720,6 @@ function Main() {
               </p>
             </div>
             <div className={styles.card}>
-              <h4>الربح</h4>
-              <p>{isHidden ? "****" : finalProfit} جنيه</p>
-            </div>
-            <div className={styles.card}>
-              <h4>صافي الربح</h4>
-              <p>
-                {isHidden
-                  ? "****"
-                  : `${Number(finalProfit) - Number(totalMasrofat)}`}{" "}
-                جنيه
-              </p>
-            </div>
-            <div className={styles.card}>
               <h4>أنشط موظف</h4>
               <p>{isHidden ? "****" : topEmployee}</p>
             </div>

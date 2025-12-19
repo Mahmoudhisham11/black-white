@@ -678,7 +678,7 @@ function Products() {
             <svg id="barcode" class="barcode"></svg>
             <div class="container">
               <div class="price">${product.code ?? ""} </div>
-              <div class="price">${product.buyPrice ?? ""} EGP </div>
+              <div class="price">${product.sellPrice ?? ""} EGP </div>
             </div>
           </div>
           <script>

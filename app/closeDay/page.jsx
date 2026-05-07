@@ -466,22 +466,18 @@ function CloseDayContent() {
               </span>
             </div>
 
-            {isAdmin && (
-              <>
-                <div className={styles.summaryCard}>
-                  <span className={styles.summaryLabel}>الربح</span>
-                  <span className={styles.summaryValue}>
-                    {totals.profit.toFixed(2)} EGP
-                  </span>
-                </div>
-                <div className={styles.summaryCard}>
-                  <span className={styles.summaryLabel}>صافي الربح</span>
-                  <span className={styles.summaryValue}>
-                    {totals.netProfit.toFixed(2)} EGP
-                  </span>
-                </div>
-              </>
-            )}
+            <div className={styles.summaryCard}>
+              <span className={styles.summaryLabel}>الربح</span>
+              <span className={styles.summaryValue}>
+                {totals.profit.toFixed(2)} EGP
+              </span>
+            </div>
+            <div className={styles.summaryCard}>
+              <span className={styles.summaryLabel}>صافي الربح</span>
+              <span className={styles.summaryValue}>
+                {totals.netProfit.toFixed(2)} EGP
+              </span>
+            </div>
 
             <div className={styles.summaryCard}>
               <span className={styles.summaryLabel}>قفل بواسطة</span>

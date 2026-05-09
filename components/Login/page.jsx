@@ -47,8 +47,7 @@ const handleCreatAcc = async () => {
                 debts: true,       // صفحة البضاعة
                 masrofat: false,    // صفحة المصاريف
                 reports: false,     // صفحة المرتجعات
-                settings: true,    // صفحة الإعدادات
-                phones: true       // صفحة الموبايلات/الأجهزة
+                settings: true,    // صفحة الإعدادات (true = ممنوع الدخول)
             }
         })
         alert("✅ تم انشاء حساب للمستخدم")

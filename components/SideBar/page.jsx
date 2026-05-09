@@ -1,6 +1,9 @@
 'use client';
 import styles from "./styles.module.css";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "@/app/firebase";
 import { IoHomeOutline } from "react-icons/io5";
 import { TbMoneybag } from "react-icons/tb";
 import { HiOutlineWallet } from "react-icons/hi2";
@@ -15,6 +18,36 @@ import { useTheme } from "@/contexts/ThemeContext";
 
 function SideBar({openSideBar, setOpenSideBar}) {
     const { theme, toggleTheme } = useTheme();
+    const [canOpenSettings, setCanOpenSettings] = useState(false);
+
+    useEffect(() => {
+        const load = async () => {
+            try {
+                const userName =
+                    typeof window !== "undefined"
+                        ? localStorage.getItem("userName")
+                        : null;
+                if (!userName) {
+                    setCanOpenSettings(false);
+                    return;
+                }
+                const q = query(
+                    collection(db, "users"),
+                    where("userName", "==", userName)
+                );
+                const snap = await getDocs(q);
+                if (snap.empty) {
+                    setCanOpenSettings(false);
+                    return;
+                }
+                const user = snap.docs[0].data();
+                setCanOpenSettings(user.permissions?.settings !== true);
+            } catch {
+                setCanOpenSettings(false);
+            }
+        };
+        load();
+    }, []);
 
     const handleLogout = () => {
         if(typeof window !== 'undefined') {
@@ -75,10 +108,12 @@ function SideBar({openSideBar, setOpenSideBar}) {
                 </Link>
             </div>
             <div className={styles.logout}>
+                {canOpenSettings && (
                   <Link href={'/settings'} className={styles.actionLinks}>
                     <span><GoGear/></span>
                     <span>الاعدادات</span>
-                </Link>  
+                </Link>
+                )}
                 <Link href={'/'} className={styles.actionLinks} onClick={handleLogout}>
                     <span><BiLogOutCircle/></span>
                     <span>تسجيل الخروج</span>

@@ -31,7 +31,6 @@ function SettingsContent() {
   const [employees, setEmployees] = useState([]);
   const [selectedUser, setSelectedUser] = useState("");
   const [permissions, setPermissions] = useState({
-    phones: false,
     products: false,
     masrofat: false,
     employees: false,
@@ -137,7 +136,6 @@ function SettingsContent() {
   useEffect(() => {
     setSelectedUser("");
     setPermissions({
-      phones: false,
       products: false,
       masrofat: false,
       employees: false,
@@ -153,7 +151,6 @@ function SettingsContent() {
     const loadPermissions = async () => {
       if (!selectedUser) {
         setPermissions({
-          phones: false,
           products: false,
           masrofat: false,
           employees: false,
@@ -172,7 +169,6 @@ function SettingsContent() {
 
           setPermissions(
             userData.permissions || {
-              phones: false,
               products: false,
               masrofat: false,
               employees: false,
